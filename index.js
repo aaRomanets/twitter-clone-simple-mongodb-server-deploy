@@ -23,7 +23,7 @@ const mongoose = require('mongoose');
 
 //подключаем базу данных Mongo DB
 mongoose.connect(
-    process.env.MONGODB_URL,
+    process.env.DB_URL,
     {
         //these are options to ensure that the connection is done properly
         useNewUrlParser: true,
@@ -33,11 +33,11 @@ mongoose.connect(
 )
 .then(() => 
 {
-     console.log("Successfully connected to MongoDB!")        
+     console.log("Successfully connected to MongoDB Atlas!")        
 })
 .catch((error) => 
 {
-    console.log("Unable to connect to MongoDB!");
+    console.log("Unable to connect to MongoDB Atlas!");
     console.error(error);
 })  
 
