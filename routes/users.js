@@ -30,13 +30,17 @@ router.route('/register').post((req,res) =>
     {
         email: req.body.email
     })
-    .then(user => 
+    .then(userExist => 
     {
-        //если есть то возвращаем ошибку
-        if (user) 
+        //существующего пользователя удаляем из базы данных
+        if (userExist != undefined)
         {
-            errors.email = 'Email was used!'
-            return res.status(404).json(errors);
+            User.findOneAndDelete(
+            {
+                email: req.body.email
+            },
+            (err, doc) => {
+            });
         }
 
         //если нет то регистрируем нового пользователя в модели User на сервере mongodb
