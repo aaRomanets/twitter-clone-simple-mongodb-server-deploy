@@ -55,7 +55,9 @@ router.route('/register').post((req,res) =>
                     login: req.body.login,
                     password: hash
                 })
-                newUser.save().then(newUser => res.json(newUser)).catch(err => console.log(err))
+                newUser.save()
+                .then(newUser => res.json(newUser))
+                .catch(err => console.log(err))
             })
         })
     })
